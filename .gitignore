@@ -1,0 +1,11 @@
+*.bam*
+*.bai
+*.fq
+*.vcf*
+*.inputs
+mutect2_batch/*.sh
+*cromwell*
+*.json
+*.snv
+*batch*
+log
