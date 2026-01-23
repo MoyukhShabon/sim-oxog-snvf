@@ -18,7 +18,7 @@ bundle_root = "../data/gatk-test-data/mutect2"
 
 
 outdir = 'inputs'
-batch_script_dir = "mutect2_batch"
+batch_script_dir = "run_batch_mutect2"
 
 os.makedirs(outdir, exist_ok=True)
 os.makedirs(batch_script_dir, exist_ok=True)
@@ -70,7 +70,4 @@ for path in bam_paths:
 		sh.writelines(content)
 
 	print(f"Prepared execution script for: {input_path}")
-
-
-
 
