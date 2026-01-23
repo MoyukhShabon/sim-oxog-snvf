@@ -1,0 +1,10 @@
+#!usr/bin/env bash
+
+bash sim_10x.sh
+bash sim_20x.sh
+bash sim_50x.sh
+bash sim_100x.sh
+bash sim_200x.sh
+bash sim_500x.sh
+bash sim_1000x.sh
+
