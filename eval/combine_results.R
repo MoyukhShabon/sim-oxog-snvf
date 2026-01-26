@@ -15,6 +15,7 @@ eval_dirs = c(
 for (eval_dir in eval_dirs){
 	## List name of models that were evaluated. 
 	models <- c("all-models", "mobsnvf", "vafsnvf", "sobdetector", "gatk-obmm")
+	annot <- read.delim(file.path("../annot", sprintf("%s.tsv", basename(eval_dir))))
 
 	message(cat("\tCombining results for: ", eval_dir))
 
@@ -34,6 +35,7 @@ for (eval_dir in eval_dirs){
 	)
 
 	auc <- auc[order(auc$sample_name, auc$model),]
+	auc <- merge(auc, annot, by = "sample_name", all.x = TRUE)
 
 	qwrite(auc, file.path(eval_dir, "combined_auc_table.tsv"))
 
