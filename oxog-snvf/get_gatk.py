@@ -30,7 +30,7 @@ for path in tqdm(vcf_paths):
 	outdir = f"{dataset}/gatk-obmm/{sample}"
 	os.makedirs(outdir, exist_ok=True)
 
-	vcf.write_csv(f"{outdir}/{fname}.gatk-obmm.tsv")
+	vcf.write_csv(f"{outdir}/{fname}.gatk-obmm.tsv", separator="\t")
 	
 	
 
