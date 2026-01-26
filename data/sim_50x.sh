@@ -17,7 +17,7 @@ if [[ ! -f $ref ]]; then
 fi
 
 berror=0.001  # Base error rate
-nreads=2000  # Mean coverage ~50x
+nreads=5000  # Mean coverage ~50x
 purities=( 0.90 0.75 0.50 0.25 0.10 0.05 0.01 )  # Cancer purity
 thetas=( 0.05 )  # Rate of genuine mutations
 phis=( 0.95 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0.05 0.025 )   # Damage rate
@@ -60,11 +60,7 @@ for purity in "${purities[@]}"; do
 			# "usage : $0 <prefix> <reference-fasta>"
 			$bin/align.sh $fq_dir/${sample_name}_orig $bam_dir/${sample_name}_orig $ref
 
-			# # call snvs using freebayes | Outputs orig.calls.vcf and orig.calls.snv
-			# # "usage : $0 <bam> <reference-fasta>"
-			# $bin/freebayes-call.sh $prefix/orig.bam $ref
-
-			# Makes artificial damage (FFPE and oxoG) to reads
+			# Makes artificial damage (oxoG) to reads
 			# Damage is called using the phi parameter (-P)
 			
 			# damage reads | # Outputs oxog.r1.fq, oxog.r2.fq
@@ -73,9 +69,6 @@ for purity in "${purities[@]}"; do
 
 			# align damaged reads | Outputs ffpe.bam, ffpe.bai, oxog.bam and oxog.bai
 			$bin/align.sh $fq_dir/${sample_name}_$damage $bam_dir/${sample_name}_$damage $ref
-
-			# # call damaged snvs | Outputs ffpe.calls.vcf, ffpe.calls.snv, oxog.calls.vcf and oxog.calls.snv
-			# $bin/freebayes-call.sh $prefix/$damage.bam $ref
 				
 			echo -e "\n\n========== ####                Purity_Theta_Phi #### =========="
 			echo -e "========== #### Simulated data ${I}_____${J}____${K} #### ==========\n\n"
