@@ -6,23 +6,32 @@ The performance for MOBSNVF is benchmarked against other models - VAFSNVF (our i
 
 ## Dependencies
 
-- GATK - 4.6.2.0
 - BWA - 0.7.19
+- GATK - 4.6.2.0
 - bcftools
-- dlazy
 - samtools
+- dlazy
 - Python
 - R
+- SOBDetector (included)
+- OpenJDK
+- cromwell
 
 ### Python Libraries
 - Polars
+- Numpy
 
 ### R libraries
 
 - argparser
 - io
 - ggplot2
+- patchwork
+- hrbrthemes
+- viridis
 - precrec
+- glue
+- tidyR
 
 
 ## Analysis Replication
@@ -41,7 +50,9 @@ All paths mentioned are relative to the repository root.
 	bash simulate_data.sh
 	```
 
-	- This will generate simulated data - fastqs and bams, across tumor purity, and damage extent and sequencing depth. The data is separated into datasets according to sequencing coverage.
+	- This will generate simulated data - fastqs and bams, across tumor purity, and damage extent and sequencing depth. 
+	- The data is separated into datasets according to sequencing coverage.
+	- Annotations describing each samples are found in the `annot/` directory.
 
 3. Go to the ground-truth directory and run
 
